@@ -88,6 +88,15 @@ function buy() {
     let ema2 = Number(ema25[ema25.length - 1]);
     let ema3 = Number(ema50[ema50.length - 1]);
     if (ema1 && ema2 && ema2) {
+	sellPrice = Number(prices[prices.length - 1]);
+	if (sellPrice < buyPrice - (buyPrice * 0.3)) {
+		fs.appendFile('history.txt', '\nVende 10-' + prices[prices.length - 1] + "-" + Number(prices[pr
+ices.length - 1]) * 10 + "-" + win, (err) => {
+                    if (err) throw err;
+                    console.log('Vende');                               });
+                quantity = 10;                         
+		win += buyPrice - sellPrice;
+	}
         if (ema3 > ema2) {
             if (quantity === 0) {
                 sellPrice = Number(prices[prices.length - 1]);
