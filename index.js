@@ -90,8 +90,7 @@ function buy() {
     if (ema1 && ema2 && ema2) {
 	sellPrice = Number(prices[prices.length - 1]);
 	if (sellPrice < buyPrice - (buyPrice * 0.3)) {
-		fs.appendFile('history.txt', '\nVende 10-' + prices[prices.length - 1] + "-" + Number(prices[pr
-ices.length - 1]) * 10 + "-" + win, (err) => {
+		fs.appendFile('history.txt', '\nVende 10-' + prices[prices.length - 1] + "-" + Number(prices[prices.length - 1]) * 10 + "-" + win, (err) => {
                     if (err) throw err;
                     console.log('Vende');                               });
                 quantity = 10;                         
