@@ -106,7 +106,6 @@ function buy() {
                     console.log('Compra');
                 });
                 quantity = 0;
-                win += buyPrice - sellPrice;
             }
         }
     }
