@@ -107,7 +107,7 @@ function buy() {
                 quantity = 10;
                 win += buyPrice - sellPrice;
 	    }
-            }
+        
         } else if (ema3 < ema2) {
             if (quantity === 10) {
                 buyPrice = Number(prices[prices.length - 1]);
@@ -118,6 +118,7 @@ function buy() {
                 quantity = 0;
             }
         }
+	}
     }
 }
 
