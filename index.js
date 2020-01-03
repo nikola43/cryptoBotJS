@@ -100,7 +100,7 @@ function buy() {
         if (ema3 > ema2) {
             if (quantity === 0) {
                 sellPrice = Number(prices[prices.length - 1]);
-                fs.appendFile('history.txt', '\nVende 10 -' + prices[prices.length - 1] + "-" + Number(prices[prices.length - 1]) * 10 + "-" + win, (err) => {
+                fs.appendFile('history.txt', '\nVende,10,' + prices[prices.length - 1] + "," + Number(prices[prices.length - 1]) * 10 + "," + win, (err) => {
                     if (err) throw err;
                     console.log('Vende');
                 });
@@ -111,7 +111,7 @@ function buy() {
         } else if (ema3 < ema2) {
             if (quantity === 10) {
                 buyPrice = Number(prices[prices.length - 1]);
-                fs.appendFile('history.txt', '\nCompra 10 -' + prices[prices.length - 1] + "-" + Number(prices[prices.length - 1]) * 10 + "-" + win, (err) => {
+                fs.appendFile('history.txt', '\nCompra,10,' + prices[prices.length - 1] + "," + Number(prices[prices.length - 1]) * 10 + "," + win, (err) => {
                     if (err) throw err;
                     console.log('Compra');
                 });
