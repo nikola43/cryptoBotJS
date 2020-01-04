@@ -19,7 +19,7 @@ let il = new InfiniteLoop;
 
 //add it by calling .add
 il.add(main, []);
-il.setInterval(2000);
+il.setInterval(1000);
 il.run();
 
 function main() {
@@ -30,7 +30,7 @@ function main() {
 }
 
 function callApi() {
-    axios.get('https://api.binance.com/api/v3/klines?symbol=BNBBTC&interval=1m&limit=200')
+    axios.get('https://api.binance.com/api/v3/klines?symbol=ETHBTC&interval=1m&limit=200')
         .then(response => {
             for (let i = 0; i < response.data.length; i++) {
                 prices.push(Number(response.data[i][4]))
@@ -90,14 +90,14 @@ function buy() {
     if (ema1 && ema2 && ema2) {
 	sellPrice = Number(prices[prices.length - 1]);
 	if (sellPrice < buyPrice - (buyPrice * 0.3)) {
-		fs.appendFile('history.txt', '\nVende 10-' + prices[prices.length - 1] + "-" + Number(prices[prices.length - 1]) * 10 + "-" + win, (err) => {
+		fs.appendFile('history.txt', '\nLIMIT 10-' + prices[prices.length - 1] + "-" + Number(prices[prices.length - 1]) * 10 + "-" + win, (err) => {
                     if (err) throw err;
                     console.log('Vende');                               });
                 quantity = 10;                         
 		win += buyPrice - sellPrice;
 	} else {
 
-        if (ema3 > ema2) {
+        if (ema2 > ema1) {
             if (quantity === 0) {
                 sellPrice = Number(prices[prices.length - 1]);
                 fs.appendFile('history.txt', '\nVende,10,' + prices[prices.length - 1] + "," + Number(prices[prices.length - 1]) * 10 + "," + win, (err) => {
@@ -108,7 +108,7 @@ function buy() {
                 win += buyPrice - sellPrice;
 	    }
         
-        } else if (ema3 < ema2) {
+        } else if (ema2 < ema1) {
             if (quantity === 10) {
                 buyPrice = Number(prices[prices.length - 1]);
                 fs.appendFile('history.txt', '\nCompra,10,' + prices[prices.length - 1] + "," + Number(prices[prices.length - 1]) * 10 + "," + win, (err) => {
